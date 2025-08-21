@@ -13,10 +13,9 @@ namespace Aura
 		{
 		
 		public:
-			CubeObject() = default;
+			CubeObject() = delete;
 			~CubeObject();
 			CubeObject(const std::string& name, const std::string& tag = "object");
-			CubeObject(const std::string& name);
 			std::shared_ptr<Nyx::Renderer::GL::VAO> getVAO() override {
 				std::shared_ptr<Nyx::Renderer::GL::VAO> vao;
 				Aura::Meshes::AMeshManager::ACubeMesh()->getVAO(vao);

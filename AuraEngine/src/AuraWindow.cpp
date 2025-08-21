@@ -34,6 +34,10 @@ namespace Aura {
 			glEnable(GL_DEPTH_TEST);
 			while (!m_Window->windowClosed())
 			{
+				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+				glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Set clear color to dark gray
+
 				float currTime = glfwGetTime();
 				float deltaTime = currTime - prevTime;
 				prevTime = currTime;
@@ -42,8 +46,6 @@ namespace Aura {
 					callback(deltaTime);
 				}
 				ARenderer::draw();
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Set clear color to dark gray
 				m_Window->update();
 
 			}

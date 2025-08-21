@@ -1,5 +1,6 @@
 #include "ARenderer.h"
 #include "../Entity/AEntityManager.h"
+#include "../AuraLogger.h"
 #include <memory>
 #include <vector>
 
@@ -20,6 +21,7 @@ namespace Aura {
 					vaos.push_back(entity->getVAO());
 			}
 		}
+		AURA_CORE_INFO("Drawing {} entities", vaos.size());
 		m_Renderer->draw(vaos.data(), vaos.size());
 	}
 	void ARenderer::draw() {
