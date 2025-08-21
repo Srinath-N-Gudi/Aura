@@ -2,7 +2,7 @@
 
 
 #include <Nyx/Renderer/GL/Renderer.h>
-#include "../Entity/Entitiy.h"
+#include "../Entity/Entity.h"
 
 
 
@@ -11,10 +11,13 @@
 namespace Aura {
 	class ARenderer {
 	public:
-		ARenderer();
-		~ARenderer();
-		void draw();
+		static void draw();
+		static ARenderer& Get();
+			
 	private:
+		ARenderer();
+		void Idraw();
+		~ARenderer();
 		Nyx::Renderer::GL::Renderer* m_Renderer;
 	};
 } // namespace Aura

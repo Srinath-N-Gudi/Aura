@@ -18,7 +18,7 @@ namespace Aura
 			};
 			Nyx::Window::Window* m_Window;
 			using UpdateCallBack = std::function<void(float deltaTime)>;
-			
+			void Init();
 		public:
 			AWindow(const char* title, int width, int height);
 			~AWindow();

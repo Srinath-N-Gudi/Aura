@@ -54,6 +54,3 @@ namespace Aura
 
 }
 
-
-
-Aura::Meshes::CubeMesh ACubeMesh;

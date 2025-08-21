@@ -14,7 +14,7 @@ namespace Meshes
 		CubeMesh();
 		~CubeMesh();
 
-		void getVAO(std::shared_ptr<Nyx::Renderer::GL::VAO> vao)
+		void getVAO(std::shared_ptr<Nyx::Renderer::GL::VAO>& vao)
 		{
 			vao = m_VAO;
 		}
