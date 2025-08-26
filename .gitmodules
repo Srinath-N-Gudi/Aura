@@ -1,0 +1,3 @@
+[submodule "AuraEngine/src/Vendors/Nyx"]
+	path = AuraEngine/src/Vendors/Nyx
+	url = https://github.com/Srinath-N-Gudi/Nyx.git
