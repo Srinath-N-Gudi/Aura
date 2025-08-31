@@ -25,11 +25,6 @@ namespace Aura
         Get().IaddEntity(entity);
     }
 
-    void AEntityManager::removeEntity(int id)
-    {
-        Get().IremoveEntity(id);
-    }
-
     Entity* AEntityManager::findEntityByID(int id) 
     {
         return Get().IfindEntityByID(id);
@@ -65,19 +60,9 @@ namespace Aura
         if (!entity) return;
         m_Entities[m_NextID] = entity;
         entity->m_ID = m_NextID++;
-    }
-
-    void AEntityManager::IremoveEntity(int id)
-    {
-        auto it = m_Entities.find(id);
-        if (it != m_Entities.end())
-        {
-            delete it->second; // Free memory if needed
-            m_Entities.erase(it);
-        }
-    }
-
+    }   
     Entity* AEntityManager::IfindEntityByID(int id) const
+
     {
         auto it = m_Entities.find(id);
         return (it != m_Entities.end()) ? it->second : nullptr;
@@ -106,10 +91,6 @@ namespace Aura
 
     void AEntityManager::IclearEntities()
     {
-        for (auto& pair : m_Entities)
-        {
-            delete pair.second;
-        }
         m_Entities.clear();
         m_NextID = 0;
     }

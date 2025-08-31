@@ -5,8 +5,9 @@
 #include "ARenderer/ARenderer.h"
 #include "Entity/AEntityManager.h"
 #include "Entity/Meshes/MeshesManager.h"
+#include "AShader/AShaderManager.h"
 #include <cassert>
-
+#include <glm/glm.hpp>
 
 
 
@@ -21,8 +22,10 @@ namespace Aura {
 		}
 
 		AWindow::~AWindow() {
+
+			AEntityManager::clearEntities();
 			delete m_Window;
-			AURA_CORE_INFO("Destroyed Aura Window: {}", m_Window->getWindowTitle());
+			AURA_CORE_INFO("Destroyed Aura Window: ");
 
 
 		}
@@ -43,7 +46,7 @@ namespace Aura {
 				prevTime = currTime;
 				if (callback)
 				{
-					callback(deltaTime);
+					callback(deltaTime, this->m_Window);
 				}
 				ARenderer::draw();
 				m_Window->update();
@@ -73,7 +76,8 @@ namespace Aura {
 			for (int i = 0; i < n; i++) {
 				AURA_CORE_INFO("OpenGL Extension {} : {}", i + 1, reinterpret_cast<const char*>(glGetStringi(GL_EXTENSIONS, i)));
 			}
-
+			assert(AShaderManager::Get().Load("basic", "shaders\\basic.vert", "shaders\\basic.frag") && "Failed to load basic shader");
+			ARenderer::setDefaultProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)m_Window->getWidth() / m_Window->getHeight(), 0.1f, 100.0f));
 			Meshes::AMeshManager::GenerateMeshes();
 		}
 	} // namespace Window

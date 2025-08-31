@@ -39,7 +39,6 @@ namespace Aura
 
         // Internal functions (actual logic)
         void IaddEntity(Entity* entity);
-        void IremoveEntity(int id);
         Entity* IfindEntityByID(int id) const;
         Entity* IfindEntityByName(const std::string& name) const;
         std::vector<Entity*> IfindEntitiesByTag(const std::string& tag) const;

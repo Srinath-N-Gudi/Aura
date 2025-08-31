@@ -1,6 +1,5 @@
 #include  "MeshesManager.h"
-
-
+#include "../AuraLogger.h"
 namespace Aura
 {
 	namespace Meshes
@@ -31,6 +30,7 @@ namespace Aura
 		{
 		}
 		AMeshManager::~AMeshManager() {
+			AURA_CORE_INFO("[AMeshManager] : Cleaning up Meshes...");
 			delete m_CubeMesh; // Clean up resources
 		}
 	}

@@ -17,7 +17,7 @@ namespace Aura
 				.resizable = true
 			};
 			Nyx::Window::Window* m_Window;
-			using UpdateCallBack = std::function<void(float deltaTime)>;
+			using UpdateCallBack = std::function<void(float deltaTime, Nyx::Window::Window* window)>;
 			void Init();
 		public:
 			AWindow(const char* title, int width, int height);
