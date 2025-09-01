@@ -23,7 +23,6 @@ namespace Aura {
 
 		AWindow::~AWindow() {
 
-			AEntityManager::clearEntities();
 			delete m_Window;
 			AURA_CORE_INFO("Destroyed Aura Window: ");
 
@@ -34,6 +33,9 @@ namespace Aura {
 		{
 			Init();
 			float prevTime = 0.0f;
+			m_Window->setResizeCallback([](int width, int height) {
+				glViewport(0, 0, width, height);
+				});
 			glEnable(GL_DEPTH_TEST);
 			while (!m_Window->windowClosed())
 			{

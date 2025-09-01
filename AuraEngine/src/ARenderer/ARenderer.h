@@ -6,8 +6,9 @@
 #include "../Entity/Entity.h"  
 
 namespace Aura { 
-	class ARenderer {
-	public: static void draw();
+	class AURA_API ARenderer {
+	public:
+		  static void draw();
 		  static ARenderer& Get();
 		  // Rendering stuff for our engine  
 		  static bool setSameProjectionForAll;
@@ -19,7 +20,7 @@ namespace Aura {
 			  Get().defaultProjection = projection;
 		  }
 	private:
-		ARenderer();
+		ARenderer() = default;
 		void Idraw();
 		~ARenderer();
 		Nyx::Renderer::GL::Renderer* m_Renderer;

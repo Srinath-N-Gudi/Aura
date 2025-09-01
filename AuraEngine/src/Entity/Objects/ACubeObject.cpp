@@ -11,7 +11,6 @@ namespace Aura
 			setName(name);
 			setTag(tag);
 			m_IsDrawable = true; // Set the object as drawable
-			AEntityManager::addEntity(this); // Add this entity to the EntityManager
 		}
 
 

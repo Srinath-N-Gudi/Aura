@@ -1,6 +1,6 @@
 #include "ARenderer.h"
-#include "../Entity/AEntityManager.h"
 #include "../AuraLogger.h"
+#include "../Scene/ASceneManager.h"
 #include "../AShader/AShaderManager.h"
 #include "../Entity/Components/ATransformComponent.h"
 #include <memory>
@@ -8,15 +8,19 @@
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Aura {
-	ARenderer::ARenderer()
-	{
-	}
 	ARenderer::~ARenderer() {
 		delete m_Renderer;
 	}
 	void ARenderer::Idraw() {
 		auto* basicShader = AShaderManager::Get().Get("basic");
-		for (const auto& pair : AEntityManager::Entities()) {
+
+		auto* scene = Scene::ASceneManager::GetScene();
+		if (!scene) {
+			AURA_CORE_ERROR("[ARenderer] : No active scene found! Please add atleast a single scene to render");
+			return;
+		}
+			for (const auto& pair : scene->getEntityManager().m_Entities) {
+
 			Entity* entity = pair.second;
 			// For every entity
 
@@ -60,4 +64,5 @@ namespace Aura {
 	ARenderer& ARenderer::Get() {
 		static ARenderer instance; // Create a static instance of ARenderer
 		return instance; // Return the singleton instance
- } } 
+	}
+}
