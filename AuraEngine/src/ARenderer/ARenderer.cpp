@@ -32,16 +32,16 @@ namespace Aura {
 
 
 
-			if (!entity->IsAlive())
+			if (!entity->isAlive())
 				continue;
 
 
 			// End Every entity
-			if (entity->IsVisible()) {
+			if (entity->isVisible()) {
 
 			
 				// dynamic cast to AComponent
-				auto component = dynamic_cast<Components::ATransformComponent*>(entity);
+				auto* component = entity->getComponent<Components::ATransformComponent>();
 				basicShader->bind();
 				glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -5.0f));
 				basicShader->setUniformMat4fv("AProjection", glm::value_ptr(defaultProjection));

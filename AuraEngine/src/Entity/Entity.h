@@ -1,5 +1,6 @@
 #pragma once
 #include "../AuraAPI.h"
+#include "Components/AComponentHelper.h"
 #include <string>
 #include <vector>
 #include <Nyx/Renderer/GL/VAO.h>
@@ -9,7 +10,7 @@ namespace Aura {
 	class AEntityManager;
 	class ABaseObject;
 
-	class AURA_API Entity {
+	class AURA_API Entity : public AComponentHelper{
 	private:
 		std::string m_Name;
 		std::string m_Tag;
@@ -21,8 +22,8 @@ namespace Aura {
 		inline std::string getTag() const { return m_Tag; }
 		inline void setTag(const std::string& tag) { m_Tag = tag; }
 		inline int getID() const { return m_ID; }
-		inline bool IsVisible() const { return m_IsDrawable; }
-		inline bool IsAlive() const { return m_IsAlive; }
+		inline bool isVisible() const { return m_IsDrawable; }
+		inline bool isAlive() const { return m_IsAlive; }
 		inline void setVisible(bool value);
 		friend class AEntityManager; // Allow EntityManager to access private members
 		friend class ABaseObject;

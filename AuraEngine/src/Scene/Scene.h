@@ -1,7 +1,6 @@
 #pragma once
 #include "../AuraAPI.h"
 #include "../Entity/AEntityManager.h"
-
 namespace Aura
 {
 	namespace Scene
@@ -14,13 +13,13 @@ namespace Aura
 			int m_ID;
 		public:
 			AScene();
+			static AScene* MakeScene() { return new AScene(); }
 			virtual ~AScene();
 			inline Aura::AEntityManager& getEntityManager() { return m_EntityManager; }
 
 			inline int getID() const { return m_ID; } 
 			template <typename ObjectType >
 			ObjectType* AddObject(const std::string& name, std::string tag = "object");
-
 			friend class ASceneManager;
 		};
 	}

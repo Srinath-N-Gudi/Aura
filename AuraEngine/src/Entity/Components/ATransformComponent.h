@@ -1,13 +1,13 @@
 #pragma once
 #include "../AuraAPI.h"
 #include <glm/glm.hpp>
-#include "AComponent.h"
+#include "ABaseComponent.h"
 namespace Aura
 {
 	class ARenderer;
 	namespace Components
 	{
-		class AURA_API ATransformComponent : public Aura::AComponent
+		class AURA_API ATransformComponent : public Aura::ABaseComponent
 		{
 		public:
 			ATransformComponent();

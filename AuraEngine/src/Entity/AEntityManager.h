@@ -27,6 +27,8 @@ namespace Aura
         std::vector<unsigned int> getIDsByTag(const std::string& tag) const;
 
         friend class ARenderer;
+
+
     private:
 
         // Delete copy/move constructors

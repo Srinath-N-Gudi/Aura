@@ -2,8 +2,6 @@
 #include <string>
 #include <Scene/ASceneManager.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 void update(float deltaTime, Nyx::Window::Window* window)
 {
 	auto* scene = Aura::Scene::ASceneManager::GetScene();
@@ -13,7 +11,7 @@ void update(float deltaTime, Nyx::Window::Window* window)
 		rotation -= 360.0f;
 	auto* cube = scene->getEntityManager().findEntityByName("Cube1");
 	if (cube) {
-		auto* transform = dynamic_cast<Aura::Components::ATransformComponent*>(cube);
+		auto* transform = cube->getComponent<Aura::Components::ATransformComponent>();
 		if (transform) {
 			transform->rotation.y = rotation;
 		}
@@ -24,15 +22,20 @@ int main()
 {
 	AURA_CORE_INFO("Aura Engine Initialized");
 	Aura::Window::AWindow window("Aura Engine Window", 800, 600);
-	Aura::Scene::AScene scene;
-	auto* cube = scene.AddObject<Aura::Objects::ACubeObject>("Cube1");
-	auto* cube2 = scene.AddObject<Aura::Objects::ACubeObject>("Cube2");
-	//Aura::Scene::ASceneManager::SetActiveScene(0);
-	cube->position.z = -5.0f;
-	cube->position.x = -1.0f;
-	cube2->position.z = -5.0f;
-	cube2->position.x = 1.0f;
-	cube2->setVisible(false);
+	Aura::Scene::AScene* scene = Aura::Scene::AScene::MakeScene();
+	auto* cube = scene->AddObject<Aura::Objects::ACubeObject>("Cube1");
+	auto* cube2 = scene->AddObject<Aura::Objects::ACubeObject>("Cube2");
+	Aura::Scene::AScene* scene2 = Aura::Scene::AScene::MakeScene();
+	auto* cube21 = scene2->AddObject<Aura::Objects::ACubeObject>("Cube1");
+	auto* cube22 = scene2->AddObject<Aura::Objects::ACubeObject>("Cube2");
+	auto* cube1Transform = cube21->getComponent<Aura::Components::ATransformComponent>();
+	auto* cube2Transform = cube22->getComponent<Aura::Components::ATransformComponent>();
+	cube1Transform->position.z = -5.0f;
+	cube1Transform->position.x = -1.0f;
+	cube2Transform->position.z = -5.0f;
+	cube2Transform->position.x = 1.0f;
+	Aura::Scene::ASceneManager::SetActiveScene(1);
+	cube2->setVisible(true);
 	window.update(update);
 	return 0;
 }

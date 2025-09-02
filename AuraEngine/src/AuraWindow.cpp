@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <Nyx/Window.h>
 #include "AuraWindow.h"
+#include "AURA_PATHS.h"
 #include "AuraLogger.h"
 #include "ARenderer/ARenderer.h"
 #include "Entity/AEntityManager.h"
@@ -78,7 +79,7 @@ namespace Aura {
 			for (int i = 0; i < n; i++) {
 				AURA_CORE_INFO("OpenGL Extension {} : {}", i + 1, reinterpret_cast<const char*>(glGetStringi(GL_EXTENSIONS, i)));
 			}
-			assert(AShaderManager::Get().Load("basic", "shaders\\basic.vert", "shaders\\basic.frag") && "Failed to load basic shader");
+			assert(AShaderManager::Get().Load("basic", PATH("basic.vert"), PATH("basic.frag")) && "Failed to load basic shader");
 			ARenderer::setDefaultProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)m_Window->getWidth() / m_Window->getHeight(), 0.1f, 100.0f));
 			Meshes::AMeshManager::GenerateMeshes();
 		}

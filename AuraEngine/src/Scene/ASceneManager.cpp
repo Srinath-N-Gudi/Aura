@@ -18,6 +18,7 @@ namespace Aura
 		ASceneManager::~ASceneManager()
 		{
 			for (auto scene : m_Scenes) {
+				if (scene)
 				delete scene;
 			}
 			m_Scenes.clear();

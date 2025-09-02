@@ -6,10 +6,9 @@ namespace Aura
 {
 	namespace Objects
 	{
-		class AURA_API ABaseObject : public Aura::Entity, public Aura::Components::ATransformComponent
-		{
+		class AURA_API ABaseObject : public Aura::Entity{
 		public:
-			ABaseObject() = default;
+			ABaseObject();
 			virtual ~ABaseObject();
 			void setVisible(bool value);
 		};

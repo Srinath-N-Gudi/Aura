@@ -47,6 +47,10 @@ namespace Aura
 
    void AEntityManager::clearEntities()
    {
+	   for (auto& pair : m_Entities)
+	   {
+		   delete pair.second; // Free memory
+	   }
        m_Entities.clear();
        m_NextID = 0;
    }
