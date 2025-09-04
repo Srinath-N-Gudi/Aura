@@ -81,7 +81,7 @@ namespace Aura {
 			}
 			AURA_CORE_INFO("Loading Shaders from : {}", PATH(""));
 			assert(AShaderManager::Get().Load("basic", PATH("basic.vert"), PATH("basic.frag")) && "Failed to load basic shader");
-			ARenderer::setDefaultProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)m_Window->getWidth() / m_Window->getHeight(), 0.1f, 100.0f));
+			ARenderer::setDefaultProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)m_Window->getWidth() / m_Window->getHeight(), 0.1f, 1000.0f));
 			Meshes::AMeshManager::GenerateMeshes();
 		}
 	} // namespace Window

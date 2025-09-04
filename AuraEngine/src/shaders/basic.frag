@@ -4,9 +4,15 @@ out vec4 FragColor;
 
 in vec2 TexCoord;
 uniform sampler2D u_Texture;
+uniform int useTexture;
+uniform vec3 albedoColor;
 
 void main()
 {
-	vec3 texColor = vec3(texture(u_Texture, TexCoord));
-	FragColor = vec4(texColor, 1.0);
+	vec3 pixelColor;
+	if (useTexture == 1) // True
+		pixelColor = vec3(texture(u_Texture, TexCoord));
+	else
+		pixelColor = albedoColor; 
+	FragColor = vec4(pixelColor, 1.0);
 }

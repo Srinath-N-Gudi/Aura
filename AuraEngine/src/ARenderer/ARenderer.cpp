@@ -46,9 +46,20 @@ namespace Aura {
 				auto* material = entity->getComponent<Components::AMaterialComponent>();
 				basicShader->bind();
 				if (material) {
-					//AURA_CORE_INFO("Came inside renderer materal for material of name {}", entity->getName());
-					material->getAlbedoMap()->ActivateTextureAtSlot(0);
-					basicShader->setUniform1i("u_Texture", 0);
+					// Check if material has texture 
+					if (material->getAlbedoMap())
+					{
+						material->getAlbedoMap()->ActivateTextureAtSlot(0);
+						basicShader->setUniform1i("useTexture", 1); 
+						basicShader->setUniform1i("u_Texture", 0);
+					}
+					else // material map is not set fallback to defaulut color
+					{
+						glm::vec3 color = material->getAlbedoColor();
+						basicShader->setUniform1i("useTexture", 0);
+						basicShader->setUniform3f("albedoColor", color.r, color.g, color.b);
+
+					}
 				}
 				//glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -5.0f));
 				basicShader->setUniformMat4fv("AProjection", glm::value_ptr(defaultProjection));

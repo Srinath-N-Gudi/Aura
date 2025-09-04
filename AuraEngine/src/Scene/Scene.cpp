@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "ASceneManager.h"
 #include "../Entity/Objects/ACubeObject.h"
+#include "../Entity/Objects/ASphereObject.h"
 
 namespace Aura
 {
@@ -27,5 +28,6 @@ namespace Aura
 
 		// Explicit instantiation for ACubeObject
 		template AURA_API Objects::ACubeObject* AScene::AddObject<Objects::ACubeObject>(const std::string& name, std::string tag);
+		template AURA_API Objects::ASphereObject* AScene::AddObject<Objects::ASphereObject>(const std::string& name, std::string tag);
 	}
 }

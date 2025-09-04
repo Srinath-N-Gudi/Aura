@@ -21,7 +21,7 @@ namespace Aura
         ComponentType* getComponent();
 
         template <typename ComponentType>
-        void addComponent();
+        ComponentType* addComponent();
 
         template <typename ComponentType>
         void removeComponent();

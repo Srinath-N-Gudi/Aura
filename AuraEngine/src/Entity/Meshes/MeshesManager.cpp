@@ -10,10 +10,16 @@ namespace Aura
 				Get().m_CubeMesh = new CubeMesh(); // Create a new CubeMesh instance
 			}
 		}
-
+		void AMeshManager::MakeSphereMesh()
+		{
+			if (!Get().m_SphereMesh) {
+				Get().m_SphereMesh = new SphereMesh(); // Create a new CubeMesh instance
+			}
+		}
 		void AMeshManager::GenerateMeshes()
 		{
 			Get().MakeCubeMesh(); // Generate the CubeMesh
+			Get().MakeSphereMesh();
 		}
 		AMeshManager& AMeshManager::Get()
 		{
@@ -24,9 +30,12 @@ namespace Aura
 		{
 			return Get().m_CubeMesh; // Return the CubeMesh instance
 		}
-
+		SphereMesh* AMeshManager::ASphereMesh()
+		{
+			return Get().m_SphereMesh; // Return the CubeMesh instance
+		}
 		AMeshManager::AMeshManager()
-			: m_CubeMesh(nullptr) // Initialize m_CubeMesh to nullptr
+			: m_CubeMesh(nullptr), m_SphereMesh(nullptr) // Initialize m_CubeMesh to nullptr
 		{
 		}
 		AMeshManager::~AMeshManager() {

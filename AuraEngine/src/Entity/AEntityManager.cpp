@@ -49,6 +49,7 @@ namespace Aura
    {
 	   for (auto& pair : m_Entities)
 	   {
+	   AURA_CORE_INFO("ENTITY COUNT : {} ", m_Entities.size());
 		   delete pair.second; // Free memory
 	   }
        m_Entities.clear();
