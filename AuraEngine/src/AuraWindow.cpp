@@ -20,6 +20,7 @@ namespace Aura {
 			AURA_CORE_INFO("Created Aura Window: {} ({}x{})", title, width, height);
 			m_Window = new Nyx::Window::Window(title, width, height, m_WindowConfig);
 			AURA_CORE_INFO("Window name :  {}", m_Window->getWindowTitle());
+			Init();
 		}
 
 		AWindow::~AWindow() {
@@ -32,7 +33,6 @@ namespace Aura {
 		
 		void AWindow::update(UpdateCallBack callback)
 		{
-			Init();
 			float prevTime = 0.0f;
 			m_Window->setResizeCallback([](int width, int height) {
 				glViewport(0, 0, width, height);
@@ -79,6 +79,7 @@ namespace Aura {
 			for (int i = 0; i < n; i++) {
 				AURA_CORE_INFO("OpenGL Extension {} : {}", i + 1, reinterpret_cast<const char*>(glGetStringi(GL_EXTENSIONS, i)));
 			}
+			AURA_CORE_INFO("Loading Shaders from : {}", PATH(""));
 			assert(AShaderManager::Get().Load("basic", PATH("basic.vert"), PATH("basic.frag")) && "Failed to load basic shader");
 			ARenderer::setDefaultProjectionMatrix(glm::perspective(glm::radians(45.0f), (float)m_Window->getWidth() / m_Window->getHeight(), 0.1f, 100.0f));
 			Meshes::AMeshManager::GenerateMeshes();

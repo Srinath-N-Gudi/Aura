@@ -29,6 +29,11 @@ int main()
 	auto* cube21 = scene2->AddObject<Aura::Objects::ACubeObject>("Cube1");
 	auto* cube22 = scene2->AddObject<Aura::Objects::ACubeObject>("Cube2");
 	auto* cube1Transform = cube21->getComponent<Aura::Components::ATransformComponent>();
+	cube21->addComponent<Aura::Components::AMaterialComponent>();
+	cube21->getComponent<Aura::Components::AMaterialComponent>()->setAlbedoMap("C:\\Programs\\Learning\\Open GL\\Learnig OpenGL\\Lighting\\src\\texture6.jpg");
+	cube22->addComponent<Aura::Components::AMaterialComponent>();
+	cube22->getComponent<Aura::Components::AMaterialComponent>()->setAlbedoMap("C:\\Users\\Srinath\\OneDrive\\Pictures\\image.jpg");
+	
 	auto* cube2Transform = cube22->getComponent<Aura::Components::ATransformComponent>();
 	cube1Transform->position.z = -5.0f;
 	cube1Transform->position.x = -1.0f;

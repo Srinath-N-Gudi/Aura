@@ -4,4 +4,4 @@
 #include "AuraWindow.h"
 #include "AuraLogger.h"
 #include "Entity/Objects/ACubeObject.h"
-
+#include "Entity/Components/AMaterialComponent.h"

@@ -1,11 +1,12 @@
 #include "AComponentHelper.h"
 #include "ATransformComponent.h"
+#include "AMaterialComponent.h"
 #include <algorithm>
 
 #define INSTATIATE_COMPONENT(Type)\
 template AURA_API Type* AComponentHelper::getComponent<Type>();\
 template AURA_API void AComponentHelper::addComponent<Type>();\
-template AURA_API void AComponentHelper::removeComponent<Type>();\
+template AURA_API void AComponentHelper::removeComponent<Type>()\
 
 
 
@@ -59,5 +60,7 @@ namespace Aura
             m_Components.erase(it);
         }
     }
-	INSTATIATE_COMPONENT(Components::ATransformComponent)
+
+    INSTATIATE_COMPONENT(Components::ATransformComponent);
+    INSTATIATE_COMPONENT(Components::AMaterialComponent);
 }

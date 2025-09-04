@@ -7,4 +7,5 @@
 bin/
 bin-ints/
 AURA_PATHS.h
-
+.vscode
+Vendors/imgui/

@@ -3,6 +3,7 @@
 #include "../Scene/ASceneManager.h"
 #include "../AShader/AShaderManager.h"
 #include "../Entity/Components/ATransformComponent.h"
+#include "../Entity/Components/AMaterialComponent.h"
 #include <memory>
 #include <vector>
 #include <glm/gtc/type_ptr.hpp>
@@ -42,8 +43,14 @@ namespace Aura {
 			
 				// dynamic cast to AComponent
 				auto* component = entity->getComponent<Components::ATransformComponent>();
+				auto* material = entity->getComponent<Components::AMaterialComponent>();
 				basicShader->bind();
-				glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -5.0f));
+				if (material) {
+					//AURA_CORE_INFO("Came inside renderer materal for material of name {}", entity->getName());
+					material->getAlbedoMap()->ActivateTextureAtSlot(0);
+					basicShader->setUniform1i("u_Texture", 0);
+				}
+				//glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -5.0f));
 				basicShader->setUniformMat4fv("AProjection", glm::value_ptr(defaultProjection));
 				basicShader->setUniformMat4fv("AModel", glm::value_ptr(component->getModelMatrix())); 
 
