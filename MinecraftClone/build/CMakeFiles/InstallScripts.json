@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Programs/Projects/Aura/MinecraftClone/build/cmake_install.cmake",
+		"C:/Programs/Projects/Aura/MinecraftClone/build/_deps/glfw-build/cmake_install.cmake",
+		"C:/Programs/Projects/Aura/MinecraftClone/build/_deps/glfw-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
